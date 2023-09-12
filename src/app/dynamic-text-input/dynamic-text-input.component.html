@@ -1,0 +1,8 @@
+<ng-container
+  *ngFor="let hobbyControl of hobbies.controls; let i = index"
+  [formGroup]="hobbies"
+>
+  <div class="form-group">
+    <input type="text" class="form-control" [formControlName]="i" />
+  </div>
+</ng-container>

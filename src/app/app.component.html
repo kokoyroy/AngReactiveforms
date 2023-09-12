@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signUpForm" (ngSubmit)="formSubmit()">
+        <app-text-inout [basicInfo]="signUpForm.get('basicInfo')"></app-text-inout>
+
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input formControlName="gender" type="radio" [value]="gender" />{{
+              gender
+            }}
+          </label>
+        </div>
+        <!-- HOBBIES -->
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()">
+            Add Hobby
+          </button>
+          <app-dynamic-text-input
+            [hobbies]="signUpForm.get('hobbies')"
+          ></app-dynamic-text-input>
+        </div>
+        <!-- END OF HOBBIES -->
+        <button
+          [disabled]="signUpForm.invalid && signUpForm.touched"
+          class="btn btn-primary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
